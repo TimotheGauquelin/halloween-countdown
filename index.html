@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte à Rebours d'Halloween !</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"  href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/microsoft/209/skull_1f480.png" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">     
+            <span>HALLOWEEN</span>, c'est pour bientôt !
+            <br>Pour plus d'info , souscrivez-vous !
+        </div>
+        <form action="#" class="form">
+            <div class="email-field">
+                <input type="email" placeholder="Inserez votre email..">
+                <button>Souscrire</button>
+            </div>
+        </form>
+        <div class="count-down">
+            <div class="timer day">
+                <div class="count">
+                    <div class="numb">00</div>
+                    <div class="text">Jours</div>
+                </div>
+            </div>
+
+            <div class="timer hour">
+                <div class="count">
+                    <div class="numb">00</div>
+                    <div class="text">Heures</div>
+                </div>
+            </div>
+
+            <div class="timer min">
+                <div class="count">
+                    <div class="numb">00</div>
+                    <div class="text">Minutes</div>
+                </div>
+            </div>
+
+            <div class="timer sec">
+                <div class="count">
+                    <div class="numb">00</div>
+                    <div class="text">Secondes</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const day = document.querySelector(".day .numb");
+        const hour = document.querySelector(".hour .numb");
+        const min = document.querySelector(".min .numb");
+        const sec = document.querySelector(".sec .numb");
+
+        var timer = setInterval(() => {
+            var currentDate = new Date().getTime();
+            var launchDate = new Date('Oct 31, 2020 00:00:00').getTime();
+            var duration = launchDate - currentDate;
+            var days = Math.floor(duration / (1000 * 60 * 60 *24));
+            var hours = Math.floor((duration % (1000 * 60 * 60 *24)) / (1000 * 60 * 60 ));
+            var minutes = Math.floor((duration % (1000 * 60 * 60 )) / (1000 * 60 ));
+            var secondes = Math.floor((duration % (1000 * 60)) / 1000);
+
+            day.innerHTML = days;
+            hour.innerHTML = hours;
+            min.innerHTML = minutes;
+            sec.innerHTML = secondes;
+
+            if(days <= 0){
+                day.innerHTML = '🎃';
+            }
+
+            if(hours <= 0){
+                hour.innerHTML = '🧛';
+            }
+
+            if(minutes <= 0){
+                min.innerHTML = '👻';
+            }
+
+            if(seconds <= 0){
+                sec.innerHTML = '🕷️';
+            }
+
+        }, 1000);
+
+    </script>
+
+</body>
+</html>
